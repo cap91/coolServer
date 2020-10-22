@@ -1,0 +1,3 @@
+/home/user/Desktop/coolServer/CMakeFiles/rebuild_cache.dir
+/home/user/Desktop/coolServer/CMakeFiles/edit_cache.dir
+/home/user/Desktop/coolServer/CMakeFiles/coolServer.dir
