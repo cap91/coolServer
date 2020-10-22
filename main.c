@@ -19,7 +19,7 @@ int main() {
 
        struct sockaddr_in server_address,client_address;
        server_address.sin_family = AF_INET;
-       server_address.sin_port = htons(8080);
+       server_address.sin_port = htons(80);
        server_address.sin_addr.s_addr = INADDR_ANY;
 
        int bind_result = bind(socket_definer, (struct sockaddr *) &server_address, sizeof(server_address));
