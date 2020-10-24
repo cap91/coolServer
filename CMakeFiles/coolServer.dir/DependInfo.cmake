@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/user/Desktop/coolServer/main.c" "/home/user/Desktop/coolServer/CMakeFiles/coolServer.dir/main.c.o"
+  "/home/user/Desktop/coolServer/utils.c" "/home/user/Desktop/coolServer/CMakeFiles/coolServer.dir/utils.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
