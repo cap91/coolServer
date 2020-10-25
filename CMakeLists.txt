@@ -3,4 +3,4 @@ project(coolServer C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(coolServer  main.c utils.c)
+add_executable(coolServer  main.c server.c handler.c utils.c)

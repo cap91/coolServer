@@ -123,6 +123,33 @@ coolServer/fast:
 	$(MAKE) -f CMakeFiles/coolServer.dir/build.make CMakeFiles/coolServer.dir/build
 .PHONY : coolServer/fast
 
+handler.o: handler.c.o
+
+.PHONY : handler.o
+
+# target to build an object file
+handler.c.o:
+	$(MAKE) -f CMakeFiles/coolServer.dir/build.make CMakeFiles/coolServer.dir/handler.c.o
+.PHONY : handler.c.o
+
+handler.i: handler.c.i
+
+.PHONY : handler.i
+
+# target to preprocess a source file
+handler.c.i:
+	$(MAKE) -f CMakeFiles/coolServer.dir/build.make CMakeFiles/coolServer.dir/handler.c.i
+.PHONY : handler.c.i
+
+handler.s: handler.c.s
+
+.PHONY : handler.s
+
+# target to generate assembly for a file
+handler.c.s:
+	$(MAKE) -f CMakeFiles/coolServer.dir/build.make CMakeFiles/coolServer.dir/handler.c.s
+.PHONY : handler.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -149,6 +176,33 @@ main.s: main.c.s
 main.c.s:
 	$(MAKE) -f CMakeFiles/coolServer.dir/build.make CMakeFiles/coolServer.dir/main.c.s
 .PHONY : main.c.s
+
+server.o: server.c.o
+
+.PHONY : server.o
+
+# target to build an object file
+server.c.o:
+	$(MAKE) -f CMakeFiles/coolServer.dir/build.make CMakeFiles/coolServer.dir/server.c.o
+.PHONY : server.c.o
+
+server.i: server.c.i
+
+.PHONY : server.i
+
+# target to preprocess a source file
+server.c.i:
+	$(MAKE) -f CMakeFiles/coolServer.dir/build.make CMakeFiles/coolServer.dir/server.c.i
+.PHONY : server.c.i
+
+server.s: server.c.s
+
+.PHONY : server.s
+
+# target to generate assembly for a file
+server.c.s:
+	$(MAKE) -f CMakeFiles/coolServer.dir/build.make CMakeFiles/coolServer.dir/server.c.s
+.PHONY : server.c.s
 
 utils.o: utils.c.o
 
@@ -186,9 +240,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... coolServer"
+	@echo "... handler.o"
+	@echo "... handler.i"
+	@echo "... handler.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... server.o"
+	@echo "... server.i"
+	@echo "... server.s"
 	@echo "... utils.o"
 	@echo "... utils.i"
 	@echo "... utils.s"

@@ -1,1 +1,1 @@
-/usr/bin/cc    CMakeFiles/coolServer.dir/main.c.o CMakeFiles/coolServer.dir/utils.c.o  -o coolServer 
+/usr/bin/cc    CMakeFiles/coolServer.dir/main.c.o CMakeFiles/coolServer.dir/server.c.o CMakeFiles/coolServer.dir/handler.c.o CMakeFiles/coolServer.dir/utils.c.o  -o coolServer 

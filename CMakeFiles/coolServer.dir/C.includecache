@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/user/Desktop/coolServer/main.c
+/home/user/Desktop/coolServer/handler.c
 stdio.h
 -
 stdlib.h
@@ -21,6 +21,20 @@ string.h
 -
 utils.h
 /home/user/Desktop/coolServer/utils.h
+
+/home/user/Desktop/coolServer/handler.h
+
+/home/user/Desktop/coolServer/main.c
+stdio.h
+-
+stdlib.h
+-
+server.h
+/home/user/Desktop/coolServer/server.h
+handler.h
+/home/user/Desktop/coolServer/handler.h
+
+/home/user/Desktop/coolServer/server.h
 
 /home/user/Desktop/coolServer/utils.h
 
