@@ -46,21 +46,21 @@ static BUF* request_handler(char* request){
        printf("Requested resource : '%s'\n", formatted_data->path);
               
        if(!strcmp(formatted_data->path,"/")){
-              file = read_file("./htdocs/index.html");
+              file = read_file("../web_site/index.html");
        } 
        else{
               char* name_with_extension;
-              char* root = "./htdocs";
+              char* root = "../web_site";
               name_with_extension = malloc(strlen(formatted_data->path)+strlen(root)+1); /* make space for the new string (should check the return value ...) */
               strcpy(name_with_extension, root); /* copy name into the new var */
               strcat(name_with_extension, formatted_data->path); /* add the extension */
 
               file = read_file(name_with_extension);
               free(name_with_extension);
-              if(file == NULL) file = read_file("./htdocs/error.html");
+              if(file == NULL) file = read_file("../web_site/error.html");
               if(file == NULL ){
                      free_params(formatted_data);
-                     printf("Forces crash");
+                     printf("Forces crash\n");
                      return NULL;                
               }
 
@@ -89,11 +89,11 @@ void handle_requests(int server_socket){
 
               recv(client_socket,&request,sizeof(request),0);
               BUF *responce = request_handler(request);
-              
+              char *response_message = "HTTP/1.1 200 OK \r\n\n";
               if(responce != NULL){
                      char* name_with_extension;
 
-                     char *response_message = "HTTP/1.1 200 OK \r\n\n";
+                     
                      name_with_extension = malloc(strlen(response_message)+strlen(responce->buffer)+1); /* make space for the new string (should check the return value ...) */
                      strcpy(name_with_extension, response_message); /* copy name into the new var */
                      strcat(name_with_extension, responce->buffer); /* add the extension */
@@ -103,6 +103,8 @@ void handle_requests(int server_socket){
                      free(responce);
                      free(name_with_extension);
                      
+              }else{
+                  send(client_socket,response_message,strlen(response_message),0);
               }
 
               close(client_socket);
