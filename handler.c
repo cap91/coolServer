@@ -20,7 +20,11 @@ static PARAMS* parse_request(char* request_string){
 
        char *p1 = strstr(request_string,"/");
        char *p2 = strstr(p1," ");
+	char *p3 = strstr(p1,"?");
+
        size_t len = p2-p1;
+	size_t len2 = p3-p1;
+	if(len2 < len)len = len2;
        char *res = (char*)malloc(sizeof(char)*(len+1));
        //char res[len+1];
        strncpy(res, p1, len);
@@ -47,6 +51,7 @@ static BUF* request_handler(char* request){
               
        if(!strcmp(formatted_data->path,"/")){
               file = read_file("../web_site/index.html");
+		//printf("file :%s len:%d\n",file->buffer,file->length); ;bug alla terza richiesta vengono il buffer contiene troppi dati 
        } 
        else{
               char* name_with_extension;
@@ -67,7 +72,7 @@ static BUF* request_handler(char* request){
        }
 
        free_params(formatted_data);
-
+	
        return file;
 }
 
@@ -96,7 +101,7 @@ void handle_requests(int server_socket){
                      
                      name_with_extension = malloc(strlen(response_message)+strlen(responce->buffer)+1); /* make space for the new string (should check the return value ...) */
                      strcpy(name_with_extension, response_message); /* copy name into the new var */
-                     strcat(name_with_extension, responce->buffer); /* add the extension */
+                     strncat(name_with_extension, responce->buffer,responce->length); /* add the extension */
 
                      send(client_socket,name_with_extension,strlen(name_with_extension),0);
                      free(responce->buffer);

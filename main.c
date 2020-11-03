@@ -4,9 +4,9 @@
 #include "server.h"
 #include "handler.h"
 
-int main() {
+int main( int argc, char *argv[]) {
 
-       int port = 80;
+       int port = atoi(argv[1]);
 
        int socket_definer = get_binded_soket(port);
        if(socket_definer == -1){
