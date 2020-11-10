@@ -1,0 +1,1 @@
+BUF* get_session_response(char*);

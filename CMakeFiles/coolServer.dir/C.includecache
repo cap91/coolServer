@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,17 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/home/binaryrat/coolServer/handler.h
-
-/home/binaryrat/coolServer/main.c
+/home/user/Desktop/coolServer/handler.c
 stdio.h
 -
 stdlib.h
 -
-server.h
-/home/binaryrat/coolServer/server.h
-handler.h
-/home/binaryrat/coolServer/handler.h
+sys/types.h
+-
+sys/socket.h
+-
+arpa/inet.h
+-
+netinet/in.h
+-
+string.h
+-
+utils.h
+/home/user/Desktop/coolServer/utils.h
+pong_game.h
+/home/user/Desktop/coolServer/pong_game.h
 
-/home/binaryrat/coolServer/server.h
+/home/user/Desktop/coolServer/pong_game.h
+
+/home/user/Desktop/coolServer/utils.h
 

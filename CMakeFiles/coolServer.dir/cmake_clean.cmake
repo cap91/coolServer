@@ -1,13 +1,14 @@
-FILE(REMOVE_RECURSE
-  "CMakeFiles/coolServer.dir/main.c.o"
-  "CMakeFiles/coolServer.dir/server.c.o"
+file(REMOVE_RECURSE
   "CMakeFiles/coolServer.dir/handler.c.o"
+  "CMakeFiles/coolServer.dir/main.c.o"
+  "CMakeFiles/coolServer.dir/pong_game.c.o"
+  "CMakeFiles/coolServer.dir/server.c.o"
   "CMakeFiles/coolServer.dir/utils.c.o"
-  "coolServer.pdb"
   "coolServer"
+  "coolServer.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
-FOREACH(lang C)
-  INCLUDE(CMakeFiles/coolServer.dir/cmake_clean_${lang}.cmake OPTIONAL)
-ENDFOREACH(lang)
+foreach(lang C)
+  include(CMakeFiles/coolServer.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
