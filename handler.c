@@ -13,6 +13,7 @@
 
 typedef struct PARAMS {
        char* path;
+       char* arguments;
 } PARAMS;
 
 static PARAMS* parse_request(char* request_string){
@@ -24,13 +25,26 @@ static PARAMS* parse_request(char* request_string){
 	char *p3 = strstr(p1,"?");
 
        size_t len = p2-p1;
-	size_t len2 = p3-p1;
-	if(len2 < len)len = len2;
-       char *res = (char*)malloc(sizeof(char)*(len+1));
-       //char res[len+1];
-       strncpy(res, p1, len);
-       res[len] = '\0';
-       data->path = res;
+	size_t len_question = p3-p1;
+	size_t len_path = len;
+	
+
+	if(p3 != NULL && len_question < len) len_path = len_question;
+
+       char *path = (char*)malloc(sizeof(char)*(len_path+1));
+       strncpy(path, p1, len_path);
+       path[len_path] = '\0';
+       data->path = path;
+
+       if(p3 != NULL){
+              size_t len_args= len - len_question - 1;
+              char *arg = (char*)malloc(sizeof(char)*(len_args+1));
+              strncpy(arg, p3 + 1, len_args);
+              arg[len_args] = '\0';
+              data->arguments = arg;
+       }else{
+              data->arguments = "";
+       }
        
        return data;
 }
@@ -76,6 +90,11 @@ static BUF* request_handler(char* request,struct sockaddr_in client){
        else if (!strcmp(formatted_data->path,"/join")){
 
               result = get_session_response(connected_ip);
+              
+       }
+       else if (!strcmp(formatted_data->path,"/update")){
+
+              result = get_upd_session_data(connected_ip,formatted_data->arguments);
               
        }else{
               result = get_file(formatted_data->path);
