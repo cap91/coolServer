@@ -9,6 +9,11 @@ typedef struct SESSION {
        char* ip_pl1;
        char* ip_pl2;
        char* session_code;
+       int pl1_pos;
+       int pl2_pos;
+       int x_ball;
+       int y_ball;
+       int last_time;
 } SESSION;
 
 void init_sessions(SESSION* array){
@@ -16,6 +21,11 @@ void init_sessions(SESSION* array){
         array[i].ip_pl1 = "null";
         array[i].ip_pl2 = "null";
         array[i].session_code = "23";
+        array[i].pl1_pos = 50;
+        array[i].pl2_pos = 50;
+        array[i].x_ball = 50;
+        array[i].y_ball = 50;
+        array[i].last_time = 0;
     }
     return;
 }
@@ -61,6 +71,18 @@ char* get_first_empty(char* ip){
     return response;
 
 }
+char* compose_session_response(char* session_code){
+    char *prefix = "{\"sid\":\"";
+    char *suffix = "\"}";
+    char *response = malloc(strlen(session_code) + strlen(prefix) + strlen(suffix) + 3);
+    strcpy(response,prefix);
+    strcat(response,session_code);
+    strcat(response,suffix);
+    return response;
+}
+char* compose_position_response(SESSION session){
+
+}
 BUF* get_session_response(char* client_ip){
 
     int index = check_if_exis(client_ip);
@@ -72,12 +94,24 @@ BUF* get_session_response(char* client_ip){
     }else{
         code = get_first_empty(client_ip);
     }
-    printf("Found %d\n",index);
+    printf("Found %d\n",index,code);
     BUF *result = malloc(sizeof(BUF));
-    result->buffer = malloc(strlen(code) + 1);
-    memcpy(result->buffer,code,strlen(code));
+    result->buffer = compose_session_response(code);
     result->length = strlen(result->buffer);
 
     return result;
 }
+void compute_session_changes(SESSION session){
 
+}
+void change_player_position(char* client_ip,int add_position){
+    
+}
+BUF* get_upd_session_data(char* client_ip,int add_position){
+    int index = check_if_exis(client_ip);
+    SESSION *sessions = get_sessions();
+    if(index==-1) return NULL;
+    compute_session_changes(sessions[index]);
+    change_player_position(client_ip,add_position);
+    char *response = compose_position_response(sessions[index]);
+}
