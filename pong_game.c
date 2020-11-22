@@ -5,6 +5,7 @@
 
 #include "utils.h"
 #define MAX_SESSIONS 5
+#define HALF_BAR_HEIGTH 15
 
 typedef struct SESSION {
        char* ip_pl1;
@@ -14,6 +15,8 @@ typedef struct SESSION {
        int pl2_pos;
        int x_ball;
        int y_ball;
+       int vector_x;
+       int vector_y;
        long last_time;
 } SESSION;
 
@@ -26,6 +29,8 @@ void init_sessions(SESSION* array){
         array[i].pl2_pos = 50;
         array[i].x_ball = 50;
         array[i].y_ball = 50;
+        array[i].vector_x = 1;
+        array[i].vector_y = 0;
         array[i].last_time = 0;
     }
     return;
@@ -125,11 +130,11 @@ void change_player_position(SESSION* session,char* client_ip,int add_position){
     }
     if(position == NULL) return;
 
-    if(*position + add_position < 0){
-        add_position = *position * -1;
+    if(*position + add_position < HALF_BAR_HEIGTH){
+        add_position = (*position - HALF_BAR_HEIGTH) * -1;
     }
-    if(*position + add_position > 100){
-        add_position = 100 - *position;
+    if(*position + add_position > 100 - HALF_BAR_HEIGTH){
+        add_position = 100 - HALF_BAR_HEIGTH - *position;
     }
     *position = *position + add_position;
 }
