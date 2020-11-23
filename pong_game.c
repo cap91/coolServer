@@ -114,7 +114,26 @@ void compute_session_changes(SESSION* session){
     struct timeval tv;
     gettimeofday(&tv, NULL);
 
-    printf("Time passed :%d\n",tv.tv_sec -session->last_time);
+    /*
+    y_ball = y_ball + (tv.tv_sec - session) * vector_y;
+    if(y_ball % 2 == 0){
+        y_ball = y_ball % 100;    
+    } else {
+        y_ball = 100 - y_ball % 100;
+    }
+    x_ball = x_ball + (tv.tv_sec - session) * vector_x;   
+    if(x_ball % 100 == 0){ 
+        // Controllo collisione con le barre
+    } else {
+        if(x_ball % 2 == 0){
+            x_ball = x_ball % 100;    
+        } else {
+            x_ball = 100 - x_ball % 100;
+        }
+    } 
+    */
+       
+    printf("Time passed :%d\n",tv.tv_sec - session->last_time);
 
     session->last_time = tv.tv_sec;
 
@@ -187,5 +206,3 @@ BUF* get_upd_session_data(char* client_ip,char* args){
     return result;
 
 }
-
-\\ prova
