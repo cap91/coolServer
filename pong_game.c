@@ -114,12 +114,12 @@ void compute_session_changes(SESSION* session){
     struct timeval tv;
     gettimeofday(&tv, NULL);
 
-    double x_app = session->x_ball;
-    double y_app = session->y_ball;
-    double deltat = tv.tv_sec - session->last_time; // è in secondi o millisecondi?
+    int x_app = session->x_ball;
+    int y_app = session->y_ball;
+    int deltat = tv.tv_sec - session->last_time; // è in secondi o millisecondi?
        
     y_app = y_app + deltat * session->vector_y;
-    if(y_app % 2 == 0){
+    if(y_app / 100 % 2 == 0){
         session->y_ball = y_app % 100;    
     } else {
         session->y_ball = 100 - y_app % 100;
@@ -128,7 +128,7 @@ void compute_session_changes(SESSION* session){
     if(x_app % 100 == 0){ 
         // Controllo collisione con le barre
     } else {
-        if(x_app % 2 == 0){
+        if(x_app / 100 % 2 == 0){
             session->x_ball = x_app % 100;    
         } else {
             session->x_ball = 100 - x_app % 100;
